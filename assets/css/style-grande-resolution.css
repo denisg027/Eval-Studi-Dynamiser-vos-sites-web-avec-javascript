@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
-}
 
+}
 
 html {
     font-size: 80%;
@@ -15,13 +16,41 @@ body {
     font-weight: 700;
     height: 100vh;
     color: rgb(57, 7, 111);
-    background-image: linear-gradient(to top left, #0c26bc 50%, #1b1126 100%);
+    background-image: linear-gradient(to top, #0c26bc 20%, #1b1126 50%);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
 
+/****** Effet spin bordure cadre de jeu ******/
+
+div.global {
+    background-image: linear-gradient(var(--rotate), #3c67e3, #0c26bc 50%, #4e00c2);
+    animation: spinner 2.5s linear infinite;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 90%;
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+}
+
+@keyframes spinner {
+    0% {
+        --rotate: 0deg;
+    }
+
+    100% {
+        --rotate: 360deg;
+    }
+}
 
 @-webkit-keyframes fadeIn {
     from {
@@ -43,20 +72,20 @@ body {
     }
 }
 
-
-
 /****** Disposition du cadre de jeu ******/
+
 main {
     position: relative;
-    width: 80%;
-    height: 85%;
+    display: flex;
+    height: 95%;
+    width: 98%;
     background-color: rgba(255, 255, 255, 0.35);
     backdrop-filter: invert(80%);
     filter: invert();
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.75);
     border-radius: 20px;
     overflow: hidden;
-    display: flex;
+
 }
 
 section {
@@ -75,6 +104,10 @@ section {
     animation: fadeIn 2s;
 }
 
+li {
+    padding: 10px;
+}
+
 .rule-of-the-game {
     color: #ffffff;
     font-size: 22px;
@@ -90,8 +123,7 @@ section {
     background: rgb(216, 45, 15);
 }
 
-h1,
-.btn-close {
+h1, .btn-close {
     margin: 30px;
 }
 
@@ -115,7 +147,6 @@ h1,
     box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
 }
 
-
 /****** Eléments cadre scores et joueurs ******/
 
 .player {
@@ -125,7 +156,6 @@ h1,
     align-items: center;
     transition: all 0.75s;
 }
-
 
 .player-name {
     position: relative;
@@ -144,13 +174,12 @@ h1,
     margin-bottom: auto;
 }
 
-
 /****** Eléments du joueur actif ******/
 
 .player-active {
     border: 2px solid #ff0015;
     background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 25px;
+    border-radius: 22px;
 }
 
 .player-active .player-name {
@@ -186,8 +215,8 @@ h1,
     font-size: 3.5rem;
 }
 
-
 /****** Paramètres des boutons ******/
+
 .btn {
     position: absolute;
     left: 50%;
@@ -209,192 +238,375 @@ h1,
     box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
 }
 
-
 /****** Paramètres des icones des boutons ******/
+
 .las {
     font-size: 2rem;
     padding: 0 0.5rem;
 }
 
 
+
+
+
 /****** Disposition des boutons centrals ******/
 
+
+
 .btn-rules {
+
     top: 2rem;
+
 }
+
+
 
 .btn-new {
+
     top: 12rem;
+
 }
+
+
 
 .btn-edit {
+
     top: 7rem;
+
 }
+
+
 
 .btn-roll {
+
     top: 44rem;
+
 }
+
+
 
 .btn-keep {
+
     top: 52rem;
+
 }
+
+
 
 .btn:active {
+
     transform: translate(-50%, 3px);
+
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+
 }
+
+
 
 .btn:focus {
+
     outline: none;
+
 }
 
+
+
 .btn-rules:hover,
+
 .btn-edit:hover,
+
 .btn-roll:hover,
+
 .btn-keep:hover,
+
 .btn-new:hover,
+
 .btn-close:hover {
+
     border: 2px solid #EB4D4D;
+
 }
+
+
+
 
 
 /****** Configuration et animation du dé ******/
 
+
+
 .dice {
+
     width: 100px;
+
     height: 100px;
+
     position: absolute;
+
     top: 300px;
+
     left: 50%;
+
     transform: translate(-50%);
+
     margin: 0;
+
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 
+
+
 }
+
+
 
 @keyframes spin {
+
     0% {
+
         transform: translateZ(-50px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+
     }
+
+
 
     16% {
+
         transform: translateZ(-50px) rotateX(180deg) rotateY(180deg) rotateZ(0deg);
+
     }
+
+
 
     33% {
+
         transform: translateZ(-50px) rotateX(360deg) rotateY(90deg) rotateZ(180deg);
+
     }
+
+
 
     50% {
+
         transform: translateZ(-50px) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+
     }
+
+
 
     66% {
+
         transform: translateZ(-50px) rotateX(180deg) rotateY(360deg) rotateZ(270deg);
+
     }
+
+
 
     83% {
+
         transform: translateZ(-50px) rotateX(270deg) rotateY(180deg) rotateZ(180deg);
+
     }
+
+
 
     100% {
+
         transform: translateZ(-50px) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+
     }
+
 }
+
+
 
 .cube {
+
     width: 100px;
+
     height: 100px;
+
     position: relative;
+
     transform-style: preserve-3d;
+
     transform: translateZ(-50px);
+
     transition: transform 0.8s;
+
 }
+
+
 
 .animation-1 {
+
     animation: spin 20s infinite linear;
+
 }
+
+
 
 .animation-2 {
+
     animation: spin 1.6s infinite linear;
+
 }
+
+
 
 .cube.show-1 {
+
     transform: translateZ(-50px) rotateY(0deg);
+
 }
+
+
 
 .cube.show-2 {
+
     transform: translateZ(-50px) rotateY(-90deg);
+
 }
+
+
 
 .cube.show-3 {
+
     transform: translateZ(-50px) rotateY(-180deg);
+
 }
+
+
 
 .cube.show-4 {
+
     transform: translateZ(-50px) rotateY(90deg);
+
 }
+
+
 
 .cube.show-5 {
+
     transform: translateZ(-50px) rotateX(-90deg);
+
 }
 
+
+
 .cube.show-6 {
+
     transform: translateZ(-50px) rotateX(90deg);
+
 }
+
+
+
+
 
 
 
 div.cube>div {
+
     display: grid;
+
     position: absolute;
+
     place-items: center;
+
     width: 100px;
+
     height: 100px;
+
     border: 1px solid #444;
+
     font-size: 25px;
+
     font-weight: bold;
+
     color: #000;
+
     background: #FFF;
+
     border-radius: 20px;
+
     box-shadow: inset 0 0 0 #ccc;
 
+
+
 }
+
+
 
 .cube-face-1 {
+
     transform: rotateY(0deg) translateZ(50px);
+
 }
+
+
 
 .cube-face-2 {
+
     transform: rotateY(90deg) translateZ(50px);
+
 }
+
+
 
 .cube-face-3 {
+
     transform: rotateY(180deg) translateZ(50px);
+
 }
+
+
 
 .cube-face-4 {
+
     transform: rotateY(-90deg) translateZ(50px);
+
 }
+
+
 
 .cube-face-5 {
+
     transform: rotateX(90deg) translateZ(50px);
+
 }
 
+
+
 .cube-face-6 {
+
     transform: rotateX(-90deg) translateZ(50px);
+
 }
+
+
+
+
+
+
 
 
 
 
 
 .player-winner {
+
     background-color: #fee900;
-    font-weight: 900;
+
+    font-weight: bold;
+
 }
 
+
+
 .player-winner .player-name {
+
     font-weight: 900;
+
     color: #000000;
+
 }
